@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
+        'cleanapi' => [
             'driver' => 'sanctum',
             'provider' => 'users',
             'hash' => false,
