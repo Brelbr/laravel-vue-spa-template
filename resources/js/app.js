@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './core/App'
 import ElementUI from 'element-ui'
 import i18n from './bootstrap/i18n'
+import axios from 'axios'
 import router from './bootstrap/router'
 import store from './core/store'
 import globalMixin from './includes/mixins/globalMixin'
@@ -19,5 +20,11 @@ window.Vue = new Vue({
     store,
     auth,
     i18n,
-    render: h => h(App)
+    render: h => h(App),
+    watch: {
+        '$route' (to) {            
+            if(to.meta.reload==true){
+                window.location.reload()
+            }
+        }}
 }).$mount('#app')

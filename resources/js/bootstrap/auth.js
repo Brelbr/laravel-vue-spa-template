@@ -10,8 +10,10 @@ import driverHttpAxios from '@websanova/vue-auth/dist/drivers/http/axios.1.x.esm
 import driverRouterVueRouter from '@websanova/vue-auth/dist/drivers/router/vue-router.2.x.esm.js'
 
 Vue.use(VueAxios, axios)
+
 let token = document.head.querySelector('meta[name="csrf-token"]')
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+console.log(token.content)
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.baseURL = process.env.MIX_API_ENDPOINT
 axios.defaults.withCredentials = true
@@ -41,13 +43,13 @@ export default new VueAuth(Vue, {
         router : driverRouterVueRouter,
     },
     options : {
-        loginData: {url: process.env.MIX_API_ENDPOINT + 'auth/login', redirect: {name: 'Dashboard'}},
-        logoutData: {url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: {name: 'Login'}, makeRequest: true},
+        loginData: {url: process.env.MIX_API_ENDPOINT + 'auth/weblogin', redirect: {name: 'Dashboard'}},
+        logoutData: {url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: {name: 'index'}, makeRequest: true},
         registerData: {url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST', redirect: {name: 'Login'}},
-        fetchData: {url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST'},
+        fetchData:  {url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST'},
         refreshData: {enabled: false},
         rolesKey: 'all_permissions',
-        parseUserData: function (data) {
+        parseUserData: function (data) { 
             setI18nLanguage(data.data.locale || 'en')
             return data.data || {}
         },

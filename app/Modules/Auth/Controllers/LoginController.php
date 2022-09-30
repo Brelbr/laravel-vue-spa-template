@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+// use Cookie;
+
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
@@ -55,7 +57,15 @@ class LoginController extends Controller
 
         $this->setToken($user->createToken($request->device_name)->plainTextToken);
 
-        return true;
+        if(method_exists($this->guard(), 'attempt')) {
+            $resp = $this->guard()->attempt(
+                $this->credentials($request), $request->filled('remember')
+            );
+        } else {
+            $resp = true;
+        }
+
+        return $resp;
     }
 
     /**
@@ -66,6 +76,9 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
+
+        // $request->session()->regenerate();
+
         $this->clearLoginAttempts($request);
 
         return response()->json([
@@ -102,9 +115,33 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        if(method_exists($request->user()->currentAccessToken(), 'delete')) {
+            $request->user()->currentAccessToken()->delete();
+        } else {
+
+        }
+
+        // auth()->user()->tokens()->delete();
+        // \Auth::logout();
+
         app()->get('auth')->forgetGuards();
         auth('web')->logout();
+        auth()->guard('web')->logout();
+        // auth()->guard()->logout();
+
+        $delete_cookie = \Cookie::forget('laravel_vue_spa_template_session');
+        // Cookie::queue(\Cookie::forget('myCookie'));
+
+        // \Cookie::queue(
+        //     \Cookie::forget('laravel_vue_spa_template_session')
+        //   );
+
+        // \Cookie::queue(
+        //     \Cookie::forget('XSRF-TOKEN')
+        //   );
+
+        return response()->noContent()->withCookie($delete_cookie);
+
     }
 
     /**

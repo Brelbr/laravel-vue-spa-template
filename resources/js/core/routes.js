@@ -35,6 +35,9 @@ export const routes = [
                 path: '/',
                 component: Index,
                 name: 'index',
+                meta: {
+                    reload: true,
+                },
             },
             ...auth,
             {

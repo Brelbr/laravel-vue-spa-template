@@ -10,3 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/testroutewhithauth', function ()
+    {
+       return 'Example WEB route with Sanctum Auth';
+    })->name('testwebroutewithauth');
+});
+
+Route::get('/testroutenoauth', function ()
+    {
+       return 'Example WEB route without Sanctum Auth';
+    })->name('testwebroutenoauth');
