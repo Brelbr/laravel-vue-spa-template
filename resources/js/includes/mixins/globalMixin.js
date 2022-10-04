@@ -4,6 +4,11 @@ export default {
     data: () => ({
         globalPageSize: 10,
     }),
+    methods: {
+        GlobalFormatData(value) {
+            return moment(value).format('DD.MM.YYYY hh:mm')
+        }
+    },
     filters: {
         capitalize: function (value) {
             if (!value) return ''

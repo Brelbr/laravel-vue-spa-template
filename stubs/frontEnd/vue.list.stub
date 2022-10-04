@@ -20,6 +20,14 @@
                         {{ $t('global.add') }}
                     </el-button>
                 </el-form-item>
+                <el-form-item>
+                    <el-button
+                        type="primary"
+                        icon="el-icon-refresh"
+                        @click="handleRefresh"
+                    >
+                    </el-button>
+                </el-form-item>
                 <el-form-item class="mr-0 float-right">
                     <el-input
                         v-model="filters.search"
@@ -75,8 +83,8 @@
                 label="Updated"
                 width="200"
             >
-                <template slot-scope="updated_at">
-                    {{ updated_at.row.updated_at }}
+                <template slot-scope="scope">
+                    {{ GlobalFormatData(scope.row.updated_at) }}
                 </template>
             </el-table-column>
             <el-table-column
@@ -203,6 +211,9 @@ export default {
             this.formTitle = 'New DummySingular'
             this.formData = {}
             this.formVisible = true
+        },
+        handleRefresh() {
+            this.fetchData()
         },
         handleEdit(row) {
             this.formTitle = 'Edit DummySingular'

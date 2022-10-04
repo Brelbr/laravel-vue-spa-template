@@ -1,0 +1,10 @@
+import DummySingular from './components/DummySingular'
+
+export const routes = [
+    {
+        path: '/DummySingular',
+        name: 'DummySingular',
+        component: DummySingular,
+        iconCls: 'el-icon-menu'
+    },
+]

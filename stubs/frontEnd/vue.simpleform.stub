@@ -1,0 +1,20 @@
+<template>
+    <section id="dummyVariableSingular">
+        <div class="text-center">
+            Простая форма
+        </div>
+    </section>
+</template>
+
+<script>
+export default {
+    name: 'dummyVariableSingular',
+    data: () => ({
+
+    }),
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
