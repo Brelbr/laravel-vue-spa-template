@@ -7,6 +7,7 @@ export const messages = {
         save: 'Save',
         add: 'Add',
         edit: 'Edit',
+        refresh: 'Refresh',
         delete: 'Delete',
         new: 'New',
         search: 'Search...',

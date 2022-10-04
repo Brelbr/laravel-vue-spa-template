@@ -7,6 +7,7 @@ export const messages = {
         save: 'Сохранить',
         add: 'Добавить',
         edit: 'Редактировать',
+        refresh: 'Обновить',
         delete: 'Удалить',
         new: 'Новый',
         search: 'Искать...',
