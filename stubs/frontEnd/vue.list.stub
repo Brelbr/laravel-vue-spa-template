@@ -84,7 +84,7 @@
                 width="200"
             >
                 <template slot-scope="scope">
-                    {{ GlobalFormatData(scope.row.updated_at) }}
+                    {{ GlobalFormatDate(scope.row.updated_at) }}
                 </template>
             </el-table-column>
             <el-table-column

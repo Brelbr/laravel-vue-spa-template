@@ -1,11 +1,12 @@
 import {DATE_FORMAT, DATETIME_DB_FORMAT, DATETIME_FORMAT} from '@/core/constants/time.constants'
+import moment from 'moment'
 
 export default {
     data: () => ({
         globalPageSize: 10,
     }),
     methods: {
-        GlobalFormatData(value) {
+        GlobalFormatDate(value) {
             return moment(value).format('DD.MM.YYYY hh:mm')
         }
     },
