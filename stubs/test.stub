@@ -29,7 +29,7 @@ class DummySingularTest extends TestCase
             ->assertSuccessful()
             ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
 
-        $this->assertDatabaseHas('dummyVariablePlural', [
+        $this->assertDatabaseHas('dummyVariablePluralSnake', [
             'name' => 'Lorem',
         ]);
     }
@@ -46,7 +46,7 @@ class DummySingularTest extends TestCase
             ->assertSuccessful()
             ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
 
-        $this->assertDatabaseHas('dummyVariablePlural', [
+        $this->assertDatabaseHas('dummyVariablePluralSnake', [
             'id' => $dummyVariableSingular->id,
             'name' => 'Updated dummyVariableSingular',
         ]);
@@ -101,7 +101,7 @@ class DummySingularTest extends TestCase
             ->assertSuccessful()
             ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
 
-        $this->assertDatabaseMissing('dummyVariablePlural', [
+        $this->assertDatabaseMissing('dummyVariablePluralSnake', [
             'id' => $dummyVariableSingular->id,
             'name' => 'DummySingular for delete',
         ]);

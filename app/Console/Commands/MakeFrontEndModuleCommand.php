@@ -90,6 +90,7 @@ class MakeFrontEndModuleCommand extends Command
             'dummyVariableSingular',
             'dummyVariablePlural',
             'dummy-plural',
+            'dummyVariablePluralSnake',
         ], [
             App::getNamespace(),
             $this->module,
@@ -99,6 +100,7 @@ class MakeFrontEndModuleCommand extends Command
             lcfirst($this->module),
             lcfirst($this->module->pluralStudly()),
             lcfirst($this->module->plural()->snake('-')),
+            $this->module->plural()->snake(),
         ],
             $stub
         );
