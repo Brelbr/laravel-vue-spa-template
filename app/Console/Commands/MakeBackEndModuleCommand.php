@@ -180,7 +180,7 @@ class MakeBackEndModuleCommand extends Command
             'dummyVariableSingular',
             'dummyVariablePlural',
             'dummy-plural',
-            'dummyVariablePluralSnake',
+            'dummyVariableSnakePlural',
         ], [
             App::getNamespace(),
             $this->module,
