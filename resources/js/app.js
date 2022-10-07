@@ -24,7 +24,14 @@ window.Vue = new Vue({
     watch: {
         '$route' (to) {            
             if(to.meta.reload==true){
-                window.location.reload()
+                if(to.meta.reload==true){                
+                    axios.get('../../login').then(response => {              
+                        // TODO: This is wrong, need something else      
+                        let pos = response.data.search('csrf-token')
+                        let token = response.data.slice(pos+21, pos + 61)                  
+                        axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+                    })                
+                }
             }
         }}
 }).$mount('#app')

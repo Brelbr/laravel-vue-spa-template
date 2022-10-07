@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('cleanapi')->post('auth/logout', 'LoginController@logout')->name('logout');
 // Route::middleware('api')->post('auth/me', 'UserController@me')->name('me');
 
-Route::middleware('api')->prefix('auth')->group(function () {
+Route::prefix('auth')->group(function () {
     Route::withoutMiddleware('auth:sanctum')->group(function () {
         Route::middleware('web')->withoutMiddleware('api')->post('weblogin', 'LoginController@login')->name('weblogin'); // для таго что бы работала нормальная авторизация для всех страниц
         Route::post('login', 'LoginController@login')->name('login');
@@ -20,6 +20,6 @@ Route::middleware('api')->prefix('auth')->group(function () {
 
     });
 
-    Route::middleware('cleanapi')->withoutMiddleware('api')->post('logout', 'LoginController@logout')->name('logout');
+    Route::withoutMiddleware('api')->post('logout', 'LoginController@logout')->name('logout');
     Route::post('me', 'UserController@me')->name('me');
 });

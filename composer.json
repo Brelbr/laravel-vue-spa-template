@@ -17,7 +17,8 @@
         "laravel/sanctum": "^2.14",
         "laravel/telescope": "^4.9",
         "laravel/tinker": "^v2.4.2",
-        "laravel/ui": "^3.3"
+        "laravel/ui": "^3.3",
+        "rakutentech/laravel-request-docs": "^1.25"
     },
     "require-dev": {
         "brianium/paratest": "^6.4",
