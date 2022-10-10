@@ -165,30 +165,20 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        $session = auth()->guard('web')->getsession();
+        $cookieName = $session->getName();
+
         if(method_exists($request->user()->currentAccessToken(), 'delete')) {
             $request->user()->currentAccessToken()->delete();
         } else {
 
         }
 
-        // auth()->user()->tokens()->delete();
-        // \Auth::logout();
-
         app()->get('auth')->forgetGuards();
         auth('web')->logout();
         auth()->guard('web')->logout();
-        // auth()->guard()->logout();
 
-        $delete_cookie = \Cookie::forget('laravel_vue_spa_template_session');
-        // Cookie::queue(\Cookie::forget('myCookie'));
-
-        // \Cookie::queue(
-        //     \Cookie::forget('laravel_vue_spa_template_session')
-        //   );
-
-        // \Cookie::queue(
-        //     \Cookie::forget('XSRF-TOKEN')
-        //   );
+        $delete_cookie = \Cookie::forget($cookieName);  // TODO: wrong, think about another way
 
         return response()->noContent()->withCookie($delete_cookie);
 
