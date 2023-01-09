@@ -20,5 +20,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 Route::get('/testroutenoauth', function ()
     {
-       return 'Example WEB route without Sanctum Auth';
+       return 'Example WEB route without Sanctum Auth test';
     })->name('testwebroutenoauth');
