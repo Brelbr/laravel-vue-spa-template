@@ -4,9 +4,11 @@ import {routes} from '../core/routes'
 
 Vue.use(VueRouter)
 
+
 const router = new VueRouter({
     routes,
     mode: 'history',
+    base: process.env.MIX_SITE_SUB_URL + '/' + process.env.MIX_ADMIN_PANEL_PREFIX,
     scrollBehavior(to, from, savedPosition) {
         return new Promise((resolve) => {
             if (to.hash) {

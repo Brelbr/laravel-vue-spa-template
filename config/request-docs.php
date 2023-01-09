@@ -10,7 +10,7 @@ return [
      * Route where request docs will be served from
      * localhost:8080/request-docs
      */
-    'url' => 'request-docs',
+    'url' => env('SITE_SUB_URL').env('ADMIN_TOOLS_PREFIX').'/request-docs',
     'middlewares' => [
         // Example
         // \App\Http\Middleware\NotFoundWhenProduction::class,

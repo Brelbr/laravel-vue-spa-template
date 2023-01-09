@@ -25,14 +25,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/admin';
 
     /**
      * The Version of application api.
      *
      * @var string
      */
-    public const API_PREFIX = 'api/v1';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -94,7 +92,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->group(function () {
-                Route::view('/{any}', 'spa')
+                // Route::view('/index.'.'{any}', 'index')
+                    // ->where('any', '.*');
+                Route::view('/', 'index');
+                    // ->where('any', '.*');
+                Route::view(env('ADMIN_PANEL_PREFIX', ''), 'spa')
+                    ->where('any', '.*');
+                Route::view(env('ADMIN_PANEL_PREFIX', '').'/{any}', 'spa')
                     ->where('any', '.*');
             });
     }
@@ -115,7 +119,7 @@ class RouteServiceProvider extends ServiceProvider
             $routesPath = $modules_folder.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'routes_api.php';
 
             if (file_exists($routesPath)) {
-                Route::prefix(self::API_PREFIX)
+                Route::prefix(env('SITE_FULL_API_PREFIX', 'api/v1'))
                     ->middleware(['api', 'auth:sanctum'])
                     ->namespace("\\App\\Modules\\$module\Controllers")
                     ->group($routesPath);

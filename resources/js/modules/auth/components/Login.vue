@@ -23,21 +23,19 @@ export default {
     },
     methods: {
         onSubmit(loginData) {
-            axios.get('/sanctum/csrf-cookie').then(response => {
-                this.loading = true
-                this.$auth
-                    .login({
-                        data: loginData,
-                    })
-                    .then(() => {
+            this.loading = true
+            this.$auth
+                .login({
+                    data: loginData,
+                })
+                .then(() => {
                     // success
-                        axios.get('/sanctum/csrf-cookie')
-                    }, error => {
-                        if (error.response.status === 422)
-                            this.authErrors = error.response.data.errors
-                    })
-                    .finally(() => this.loading = false)
-            })
+                    
+                }, error => {
+                    if (error.response.status === 422)
+                        this.authErrors = error.response.data.errors
+                })
+                .finally(() => this.loading = false)
         }
     }
 }

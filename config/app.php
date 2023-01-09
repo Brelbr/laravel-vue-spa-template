@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel Vue SPA Skeleton'),
+    'name' => env('APP_NAME', 'SPA'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,11 +52,15 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'site_url' => env('SITE_URL'),
 
-    'api_url' => env('MIX_API_ENDPOINT', 'http://localhost/api'),
+    'url' => env('APP_URL'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'api_url' => env('MIX_API_ENDPOINT'),
+
+    'asset_url' => env('ASSET_URL'),
+
+    'mix_url' => env('APP_URL'),
 
     /*
     |--------------------------------------------------------------------------

@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'path' => env('TELESCOPE_PATH', 'telescope'),
+    'path' => env('SITE_SUB_URL').env('ADMIN_TOOLS_PREFIX').'/'.env('TELESCOPE_PATH', 'telescope'),
 
     /*
     |--------------------------------------------------------------------------
