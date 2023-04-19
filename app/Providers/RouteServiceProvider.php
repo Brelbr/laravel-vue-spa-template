@@ -96,8 +96,8 @@ class RouteServiceProvider extends ServiceProvider
                     // ->where('any', '.*');
                 Route::view('/', 'index');
                     // ->where('any', '.*');
-                Route::view(env('ADMIN_PANEL_PREFIX', ''), 'spa')
-                    ->where('any', '.*');
+                Route::view(env('ADMIN_PANEL_PREFIX', ''), 'spa');
+                    // ->where('any', '.*');
                 Route::view(env('ADMIN_PANEL_PREFIX', '').'/{any}', 'spa')
                     ->where('any', '.*');
             });

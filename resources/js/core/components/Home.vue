@@ -69,7 +69,7 @@ export default {
         .header {
             height: 60px;
             line-height: 60px;
-            background: #20a0ff;
+            background: #1560BD;
             color: #fff;
 
             .userinfo {

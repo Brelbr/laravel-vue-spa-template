@@ -4,14 +4,16 @@ import Welcome      from './components/Welcome'
 import Home         from './components/Home'
 import auth         from '../modules/auth/routes_auth'
 
+// import Login from '../modules/auth/components/Login'
+
 // Load modules routes dynamically.
 const requireContext = require.context('../modules', true, /routes\.js$/)
-
+console.log(requireContext.keys())
 const modules = requireContext.keys()
     .map(file =>
         [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
     )
-
+console.log(...modules)
 let moduleRoutes = []
 
 for(let i in modules) {
@@ -33,7 +35,7 @@ export const routes = [
         children: [
             {
                 path: '/',
-                component: Index,
+                component: Index,  // Or Login/Register 
                 name: 'index',
                 meta: {
                     reload: true,

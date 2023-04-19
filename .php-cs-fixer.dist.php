@@ -1,7 +1,10 @@
+#!/usr/bin/env php
 <?php
 
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/bootstrap/app.php';
+
+putenv('PHP_CS_FIXER_IGNORE_ENV=1');
 
 return (new MattAllan\LaravelCodeStyle\Config())
     ->setFinder(
@@ -15,5 +18,5 @@ return (new MattAllan\LaravelCodeStyle\Config())
             ->in(base_path('tests'))
     )
     ->setRules([
-        '@Laravel' => true,
+        '@Laravel' => true
     ]);

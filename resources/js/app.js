@@ -12,7 +12,7 @@ import './bootstrap/day'
 Vue.use(ElementUI, {i18n: (key, value) => i18n.t(key, value)})
 
 Vue.prototype.config = window.config
-Vue.config.baseurl = process.env.MIX_SITE_SUB_URL + '/' + process.env.MIX_ADMIN_PANEL_PREFIX
+Vue.config.baseurl = process.env.MIX_SITE_SUB_URL + '/' + process.env.MIX_ADMIN_PANEL_PREFIX 
 
 Vue.mixin(globalMixin)
 

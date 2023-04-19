@@ -11,7 +11,7 @@
 
 <script>
 import LoginForm from './LoginForm'
-import axios from 'axios'
+
 export default {
     name: 'Login',
     components: {LoginForm},
