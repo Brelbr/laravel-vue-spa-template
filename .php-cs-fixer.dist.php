@@ -18,5 +18,5 @@ return (new MattAllan\LaravelCodeStyle\Config())
             ->in(base_path('tests'))
     )
     ->setRules([
-        '@Laravel' => true
+        '@Laravel' => true,
     ]);
